@@ -1,0 +1,107 @@
+<resources>
+    <string name="app_name">Знакомства в Гимназии 5</string>
+
+
+    <string-array name="classes_array">
+        <item>10 класс</item>
+        <item>11 класс</item>
+    </string-array>
+
+    <string-array name="math_groups_array">
+        <item>М1</item>
+        <item>М2</item>
+        <item>М3</item>
+        <item>М4</item>
+    </string-array>
+
+    <string-array name="rus_groups_array">
+        <item>Р1</item>
+        <item>Р2</item>
+        <item>Р3</item>
+        <item>Р4</item>
+    </string-array>
+
+    <string-array name="liter_groups_array">
+        <item>Л1</item>
+        <item>Л2</item>
+        <item>Л3</item>
+        <item>Л4</item>
+    </string-array>
+
+    <string-array name="eng_groups_array">
+        <item>А1</item>
+        <item>А2</item>
+        <item>А3</item>
+        <item>А4</item>
+        <item>А5</item>
+        <item>А6</item>
+        <item>А7</item>
+        <item>А8</item>
+    </string-array>
+
+    <string-array name="hist_groups_array">
+        <item>ИСТ1</item>
+        <item>ИСТ2</item>
+        <item>ИСТ3</item>
+        <item>ИСТ4</item>
+    </string-array>
+
+    <string-array name="pe_groups_array">
+        <item>ФК1</item>
+        <item>ФК2</item>
+        <item>ФК3</item>
+        <item>ФК4</item>
+        <item>ФК5</item>
+        <item>ФК6</item>
+        <item>ФК7</item>
+        <item>ФК8</item>
+    </string-array>
+
+    ---------------------------------------
+
+    <string-array name="phys_groups_array">
+        <item>Ф1</item>
+        <item>Ф2</item>
+        <item>Ф3</item>
+        <item>Ф4</item>
+    </string-array>
+
+    <string-array name="chem_groups_array">
+        <item>Х1</item>
+        <item>Х2</item>
+        <item>Х3</item>
+        <item>Х4</item>
+    </string-array>
+
+    <string-array name="biol_groups_array">
+        <item>Б1</item>
+        <item>Б2</item>
+        <item>Б3</item>
+        <item>Б4</item>
+    </string-array>
+
+    <string-array name="soc_groups_array">
+        <item>О1</item>
+        <item>О2</item>
+        <item>О3</item>
+        <item>О4</item>
+    </string-array>
+
+    <string-array name="inf_groups_array">
+        <item>И1</item>
+        <item>И2</item>
+        <item>И3</item>
+        <item>И4</item>
+    </string-array>
+
+    <string name="inf">Информатика</string>
+    <string name="phys">Физика</string>
+    <string name="soc">Обществознание</string>
+    <string name="chem">Химия</string>
+    <string name="biol">Биология</string>
+
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_scrolling">ScrollingActivity</string>
+</resources>
