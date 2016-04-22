@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingTop="8dp"
+    android:paddingRight="16dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:textSize="16dp"
+        android:text="Ваш класс:" />
+
+    <Spinner
+        android:id="@+id/spChoosingClass"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:entries="@array/classes_array"/>
+    </TableRow>
+
+
+    <TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:textSize="16dp"
+        android:text="Группа по математике:" />
+
+    <Spinner
+        android:id="@+id/spChoosingMath"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:entries="@array/math_groups_array"/>
+    </TableRow>
+
+    <TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textSize="16dp"
+            android:text="Группа по русскому языку:" />
+
+        <Spinner
+            android:id="@+id/spChoosingRus"
+            android:layout_width="wrap_content"
+            android:entries="@array/rus_groups_array"
+            android:layout_height="wrap_content" />
+
+    </TableRow>
+
+    <TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textSize="16dp"
+            android:text="Группа по литературе:" />
+
+        <Spinner
+            android:id="@+id/spChoosingLiter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/liter_groups_array" />
+
+    </TableRow>
+
+    <TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textSize="16dp"
+            android:text="Группа по английскому:" />
+
+        <Spinner
+            android:id="@+id/spChoosingEng"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/eng_groups_array" />
+
+    </TableRow>
+
+    <TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textSize="16dp"
+            android:text="Группа по истории:" />
+
+        <Spinner
+            android:id="@+id/spChoosingHist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/hist_groups_array" />
+
+    </TableRow>
+
+    <TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textSize="16dp"
+            android:text="Группа по физкультуре:" />
+
+        <Spinner
+            android:id="@+id/spChoosingPE"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/pe_groups_array" />
+    </TableRow>
+
+    <Button
+        android:text="Следующий шаг"
+        android:id="@+id/step2"
+        android:onClick="step2"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end">
+    </Button>
+
+</TableLayout>

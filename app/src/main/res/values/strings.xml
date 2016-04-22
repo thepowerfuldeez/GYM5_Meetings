@@ -3,8 +3,8 @@
 
 
     <string-array name="classes_array">
-        <item>10 класс</item>
-        <item>11 класс</item>
+        <item>10</item>
+        <item>11</item>
     </string-array>
 
     <string-array name="math_groups_array">
@@ -60,6 +60,7 @@
     ---------------------------------------
 
     <string-array name="phys_groups_array">
+        <item>Не_выбрано</item>
         <item>Ф1</item>
         <item>Ф2</item>
         <item>Ф3</item>
@@ -67,6 +68,7 @@
     </string-array>
 
     <string-array name="chem_groups_array">
+        <item>Не_выбрано</item>
         <item>Х1</item>
         <item>Х2</item>
         <item>Х3</item>
@@ -74,6 +76,7 @@
     </string-array>
 
     <string-array name="biol_groups_array">
+        <item>Не_выбрано</item>
         <item>Б1</item>
         <item>Б2</item>
         <item>Б3</item>
@@ -81,6 +84,7 @@
     </string-array>
 
     <string-array name="soc_groups_array">
+        <item>Не_выбрано</item>
         <item>О1</item>
         <item>О2</item>
         <item>О3</item>
@@ -88,11 +92,31 @@
     </string-array>
 
     <string-array name="inf_groups_array">
+        <item>Не_выбрано</item>
         <item>И1</item>
         <item>И2</item>
         <item>И3</item>
         <item>И4</item>
     </string-array>
+
+    <string-array name="geogr_groups_array">
+        <item>Не_выбрано</item>
+        <item>Г1</item>
+        <item>Г2</item>
+        <item>Г3</item>
+        <item>Г4</item>
+    </string-array>
+
+    <string-array name="astr_groups_array">
+        <item>Не_выбрано</item>
+        <item>Астрономия</item>
+    </string-array>
+
+    <string-array name="pieg_groups_array">
+        <item>Не_выбрано</item>
+        <item>ПиЭГ</item>
+    </string-array>
+
 
     <string name="inf">Информатика</string>
     <string name="phys">Физика</string>
@@ -104,4 +128,9 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_scrolling">ScrollingActivity</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 </resources>

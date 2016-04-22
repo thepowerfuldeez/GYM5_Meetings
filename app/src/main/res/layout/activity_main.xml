@@ -1,225 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    android:layout_height="match_parent"
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
+
+    <include
+        layout="@layout/app_bar_main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/rellayout">
+        android:layout_height="match_parent" />
 
-
-        <TextView
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Ваше имя:"
-        android:id="@+id/textView"
-            android:layout_marginTop="33dp"
-            android:layout_marginRight="5dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true" />
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_main"
+        app:menu="@menu/activity_main_drawer" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New Text"
-            android:id="@+id/nameName"
-            android:layout_below="@+id/textView"
-            android:layout_marginRight="5dp"
-            android:layout_alignParentRight="true" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Ваш логин:"
-            android:id="@+id/textView3"
-            android:layout_below="@+id/nameName"
-            android:layout_marginRight="5dp"
-            android:layout_alignParentRight="true" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Small Text"
-            android:id="@+id/loginName"
-            android:layout_below="@+id/textView3"
-            android:layout_marginRight="5dp"
-            android:layout_alignParentRight="true" />
-
-        <TableRow xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/trChoosingClass"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/loginName"
-            android:layout_marginTop="15dp"
-            android:textColor="@color/gpsblue"
-            android:weightSum="1" >
-
-            <TextView
-                android:id="@+id/tvConfigPeriodStop"
-                android:layout_width="170dp"
-                android:layout_height="fill_parent"
-                android:layout_marginLeft="5dp"
-                android:text="Ваш класс:" />
-
-            <Spinner
-                android:id="@+id/spChoosingClass"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:entries="@array/classes_array"/>
-
-        </TableRow>
-
-        <TableRow xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/trChoosingMath"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/trChoosingClass"
-            android:textColor="@color/gpsblue"
-            android:weightSum="1" >
-
-            <TextView
-                android:id="@+id/tvChoosingMath"
-                android:layout_width="170dp"
-                android:layout_height="fill_parent"
-                android:layout_marginLeft="5dp"
-                android:text="Группа по математике:" />
-
-            <Spinner
-                android:id="@+id/spChoosingMath"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:entries="@array/math_groups_array"/>
-
-        </TableRow>
-
-        <TableRow xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/trChoosingRus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/trChoosingMath"
-            android:textColor="@color/gpsblue"
-            android:weightSum="1" >
-
-            <TextView
-                android:id="@+id/tvChoosingRus"
-                android:layout_width="170dp"
-                android:layout_height="fill_parent"
-                android:layout_marginLeft="5dp"
-                android:text="Группа по русскому языку:" />
-
-            <Spinner
-                android:id="@+id/spChoosingRus"
-                android:layout_width="wrap_content"
-                android:entries="@array/rus_groups_array"
-                android:layout_height="fill_parent" />
-
-        </TableRow>
-
-        <TableRow xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/trChoosingLiter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/trChoosingRus"
-            android:textColor="@color/gpsblue"
-            android:weightSum="1" >
-
-            <TextView
-                android:id="@+id/tvChoosingLiter"
-                android:layout_width="170dp"
-                android:layout_height="fill_parent"
-                android:layout_marginLeft="5dp"
-                android:text="Группа по литературе:" />
-
-            <Spinner
-                android:id="@+id/spChoosingLiter"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:entries="@array/liter_groups_array" />
-
-        </TableRow>
-
-        <TableRow xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/trChoosingEng"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/trChoosingLiter"
-            android:textColor="@color/gpsblue"
-            android:weightSum="1" >
-
-            <TextView
-                android:id="@+id/tvChoosingEng"
-                android:layout_width="170dp"
-                android:layout_height="fill_parent"
-                android:layout_marginLeft="5dp"
-                android:text="Группа по английскому:" />
-
-            <Spinner
-                android:id="@+id/spChoosingEng"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:entries="@array/eng_groups_array" />
-
-        </TableRow>
-
-        <TableRow xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/trChoosingHist"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/trChoosingEng"
-            android:textColor="@color/gpsblue"
-            android:weightSum="1" >
-
-            <TextView
-                android:id="@+id/tvChoosingHist"
-                android:layout_width="170dp"
-                android:layout_height="fill_parent"
-                android:layout_marginLeft="5dp"
-                android:text="Группа по истории:" />
-
-            <Spinner
-                android:id="@+id/spChoosingHist"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:entries="@array/hist_groups_array" />
-
-        </TableRow>
-
-        <TableRow xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/trChoosingPE"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/trChoosingHist"
-            android:textColor="@color/gpsblue"
-            android:weightSum="1" >
-
-            <TextView
-                android:id="@+id/tvChoosingPE"
-                android:layout_width="170dp"
-                android:layout_height="fill_parent"
-                android:layout_marginLeft="5dp"
-                android:text="Группа по физкультуре:" />
-
-            <Spinner
-                android:id="@+id/spChoosingPE"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:entries="@array/pe_groups_array" />
-
-        </TableRow>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:text="Добавить предмет"
-            android:id="@+id/btnAddSubject"
-            android:layout_marginRight="5dp"
-            android:layout_below="@id/trChoosingPE"
-            />
-
-    </RelativeLayout>
-</ScrollView>
+</android.support.v4.widget.DrawerLayout>

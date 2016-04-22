@@ -2,6 +2,7 @@ package cf.thepowerfuldeez.gym5meetings;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -21,6 +22,9 @@ import butterknife.ButterKnife;
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
+    SharedPreferences sPref;
+    String SAVED_EMAIL = "saved_email";
+    String SAVED_PASSWORD = "saved_password";
 
     @Bind(R.id.input_email) EditText _emailText;
     @Bind(R.id.input_password) EditText _passwordText;
@@ -51,6 +55,8 @@ public class LoginActivity extends AppCompatActivity {
                 startActivityForResult(intent, REQUEST_SIGNUP);
             }
         });
+
+        load_email_password();
     }
 
     public void login() {
@@ -78,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onAuthenticated(AuthData authData) {
 //                System.out.println("User ID: " + authData.getUid() + ", Provider: " + authData.getProvider());
                 String login = _emailText.getText().toString();
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), SelectSubjectsActivity.class);
                 intent.putExtra("eml", login);
                 startActivity(intent);
 
@@ -123,12 +129,13 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        // Disable going back to the MainActivity
+        // Disable going back to the SelectSubjectsActivity
         moveTaskToBack(true);
     }
 
     public void onLoginSuccess() {
         _loginButton.setEnabled(true);
+        save_email_password();
         finish();
     }
 
@@ -159,5 +166,21 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         return valid;
+    }
+
+    public void save_email_password() {
+        sPref = getSharedPreferences("Credentials", MODE_PRIVATE);
+        SharedPreferences.Editor ed = sPref.edit();
+        ed.putString(SAVED_EMAIL, _emailText.getText().toString());
+        ed.putString(SAVED_PASSWORD, _passwordText.getText().toString());
+        ed.commit();
+    }
+
+    public void load_email_password() {
+        sPref = getSharedPreferences("Credentials", MODE_PRIVATE);
+        String loadedEmail = sPref.getString(SAVED_EMAIL, "");
+        String loadedPassword = sPref.getString(SAVED_PASSWORD, "");
+        _emailText.setText(loadedEmail);
+        _passwordText.setText(loadedPassword);
     }
 }

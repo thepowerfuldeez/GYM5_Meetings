@@ -23,7 +23,11 @@
         <activity
             android:name=".SignupActivity"
             android:theme="@style/AppTheme.Dark" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".SelectSubjectsActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

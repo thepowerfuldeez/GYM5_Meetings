@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<TableLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingTop="8dp"
+    android:paddingRight="16dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:textSize="16dp"
+        android:text="Группа по информатике:" />
+
+    <Spinner
+        android:id="@+id/spChoosingInf"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:entries="@array/inf_groups_array"/>
+    </TableRow>
+
+
+    <TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:textSize="16dp"
+        android:text="Группа по физике:" />
+
+    <Spinner
+        android:id="@+id/spChoosingPhys"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:entries="@array/phys_groups_array"/>
+    </TableRow>
+
+    <TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textSize="16dp"
+            android:text="Группа по \nобществознанию:" />
+
+        <Spinner
+            android:id="@+id/spChoosingSoc"
+            android:layout_width="wrap_content"
+            android:entries="@array/soc_groups_array"
+            android:layout_height="wrap_content" />
+
+    </TableRow>
+
+    <TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textSize="16dp"
+            android:text="Группа по химии:" />
+
+        <Spinner
+            android:id="@+id/spChoosingChem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/chem_groups_array" />
+
+    </TableRow>
+
+    <TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textSize="16dp"
+            android:text="Группа по биологии:" />
+
+        <Spinner
+            android:id="@+id/spChoosingBiol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/biol_groups_array" />
+
+    </TableRow>
+
+    <TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textSize="16dp"
+            android:text="Группа по географии:" />
+
+        <Spinner
+            android:id="@+id/spChoosingGeogr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/geogr_groups_array" />
+
+    </TableRow>
+
+    <TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textSize="16dp"
+            android:text="Астрономия:" />
+
+        <Spinner
+            android:id="@+id/spChoosingAstr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/astr_groups_array" />
+    </TableRow>
+
+    <TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:textSize="16dp"
+            android:text="Политическая и\nЭкономическая \nГеография:" />
+
+        <Spinner
+            android:id="@+id/spChoosingPiEG"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/pieg_groups_array" />
+    </TableRow>
+
+
+    <Button
+        android:text="Завершить"
+        android:id="@+id/step3"
+        android:onClick="step3"
+        android:layout_width="50dp"
+        android:layout_marginTop="40dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end">
+    </Button>
+
+</TableLayout>
+</ScrollView>
