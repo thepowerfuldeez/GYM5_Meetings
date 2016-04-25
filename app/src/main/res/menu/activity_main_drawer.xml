@@ -3,21 +3,21 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/nav_main_schedule"
             android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:title="Общее расписание" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_my_schedule"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:title="Мое расписание" />
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:title="Not implemented" />
         <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:title="Изменить список предметов" />
     </group>
 
     <item android:title="Communicate">

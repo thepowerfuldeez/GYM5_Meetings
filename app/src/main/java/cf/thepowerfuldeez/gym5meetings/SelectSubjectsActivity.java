@@ -76,11 +76,30 @@ public class SelectSubjectsActivity extends AppCompatActivity {
         sp13_cached = sp13.getSelectedItem().toString();
         sp14_cached = sp14.getSelectedItem().toString();
 
+        if (sp7_cached.equals("Не_выбрано"))
+            sp7_cached = "";
+        if (sp8_cached.equals("Не_выбрано"))
+            sp8_cached = "";
+        if (sp9_cached.equals("Не_выбрано"))
+            sp9_cached = "";
+        if (sp10_cached.equals("Не_выбрано"))
+            sp10_cached = "";
+        if (sp11_cached.equals("Не_выбрано"))
+            sp11_cached = "";
+        if (sp12_cached.equals("Не_выбрано"))
+            sp12_cached = "";
+        if (sp13_cached.equals("Не_выбрано"))
+            sp13_cached = "";
+        if (sp14_cached.equals("Не_выбрано"))
+            sp14_cached = "";
+
+
         String uchplan = String.format("%S %S %S %S %S %S %S %S %S %S %S %S %S %S %S", sp0_cached, sp1_cached, sp2_cached, sp3_cached, sp4_cached, sp5_cached, sp6_cached, sp7_cached, sp8_cached, sp9_cached, sp10_cached, sp11_cached, sp12_cached, sp13_cached, sp14_cached);
-        ref.child("users").child(login).child("uchplan").setValue(uchplan);
-        SharedPreferences.Editor ed = getSharedPreferences("UchPlan", MODE_PRIVATE).edit();
+        uchplan = uchplan.trim();
+        ref.child("users").child(login).child("uchplan").setValue(uchplan);  // Writes study plan to Firebase db
+        SharedPreferences.Editor ed = getSharedPreferences("Credentials", MODE_PRIVATE).edit();
         ed.putString(UCH_PLAN, uchplan);
-        ed.commit();  // Writes study plan to Firebase database
+        ed.commit();  // Writes study plan to SharedPreferences
 
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);  // Back to MainActivity

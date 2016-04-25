@@ -1,16 +1,15 @@
 package cf.thepowerfuldeez.gym5meetings;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -20,12 +19,17 @@ import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
 
+import java.util.ArrayList;
+
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     String login;
     SharedPreferences sPref;
+    Firebase ref;
     String uch_plan;
+    String main_shedule;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +40,7 @@ public class MainActivity extends AppCompatActivity
         sPref = getSharedPreferences("Credentials",MODE_PRIVATE);
         login = sPref.getString("saved_email", "").split("@")[0];
 
+
         final TextView nameName = (TextView) findViewById(R.id.nameName);
         TextView loginName = (TextView) findViewById(R.id.loginName);
         if (loginName != null) {
@@ -43,8 +48,9 @@ public class MainActivity extends AppCompatActivity
         }
 
 
-        Firebase ref = new Firebase("https://gym5meetings.firebaseio.com");
+        ref = new Firebase("https://gym5meetings.firebaseio.com");
         Firebase refBase = ref.child("users").child(login);
+
         refBase.child("name").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
@@ -55,24 +61,26 @@ public class MainActivity extends AppCompatActivity
             @Override public void onCancelled(FirebaseError error) { }
         });
 
-        sPref = getSharedPreferences("UchPlan",MODE_PRIVATE);
-        uch_plan = sPref.getString("uch_plan", "");
 
-        TextView textView2 = (TextView) findViewById(R.id.textView2);
-        textView2.setText(uch_plan);
-
+        final TextView class_num = (TextView) findViewById(R.id.class_num);
+        final TextView my_groups = (TextView) findViewById(R.id.my_groups);
+        refBase.child("uchplan").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (my_groups != null) {
+                    uch_plan = String.valueOf(snapshot.getValue());
+                    String groups = uch_plan.substring(3);
+                    if (class_num != null) {
+                        class_num.setText(uch_plan.substring(0, 2));
+                    }
+                    my_groups.setText(groups);
+                }
+            }
+            @Override public void onCancelled(FirebaseError error) { }
+        });
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -82,6 +90,24 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        Firebase refBase = ref.child("users").child(login);
+
+        refBase.child("uchplan").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                String class_num = String.valueOf(snapshot.getValue()).substring(0, 2);
+                get_and_save_subject_array_for_all_days(class_num);  // Getting all schedule from Firebase and saving it.
+            }
+            @Override public void onCancelled(FirebaseError error) { }
+        });
+
+        System.out.println("After saving");
     }
 
     @Override
@@ -122,15 +148,29 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_main_schedule) {
+            Intent main_schedule_intent = new Intent(getApplicationContext(), MainSheduleActivity.class);
+            startActivity(main_schedule_intent);
+        }
 
-        } else if (id == R.id.nav_slideshow) {
+        else if (id == R.id.nav_my_schedule) {
+            Intent my_schedule_intent = new Intent(getApplicationContext(), MyScheduleActivity.class);
+            my_schedule_intent.putExtra("uch_plan", uch_plan); // Sending with uch_plan
+            startActivity(my_schedule_intent);
 
-        } else if (id == R.id.nav_manage) {
 
-        } else if (id == R.id.nav_share) {
+        }
+
+        else if (id == R.id.nav_slideshow) {
+
+        }
+
+        else if (id == R.id.nav_manage) {
+            Intent select_subjects_intent = new Intent(getApplicationContext(), SelectSubjectsActivity.class);
+            startActivity(select_subjects_intent);
+        }
+
+        else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
 
@@ -139,5 +179,31 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+
+    public void get_and_save_subject_array_for_all_days(String class_num) {
+        Firebase firebase_ref = ref.child("schedule").child(class_num);
+        final ArrayList<String> raw_days = new ArrayList<>();
+        for (String day: new String[]{"пн", "вт", "ср", "чт", "пт", "сб"}) {
+            System.out.println("Current day is " + day);
+            firebase_ref.child(day).child("subjects").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot snapshot) {
+                    String s = String.valueOf(snapshot.getValue());
+                    raw_days.add(s);
+
+                    if (raw_days.size() == 6) {
+                        main_shedule = TextUtils.join("@", raw_days);
+
+                        SharedPreferences.Editor ed = sPref.edit();
+                        ed.putString("main_schedule", main_shedule);
+                        ed.apply();
+                    }
+                }
+                @Override public void onCancelled(FirebaseError error) { }
+            });
+
+        }
     }
 }

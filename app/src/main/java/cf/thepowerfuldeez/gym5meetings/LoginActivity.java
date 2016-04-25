@@ -23,6 +23,7 @@ public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
     SharedPreferences sPref;
+    Firebase ref;
     String SAVED_EMAIL = "saved_email";
     String SAVED_PASSWORD = "saved_password";
 
@@ -37,6 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         ButterKnife.bind(this);
         Firebase.setAndroidContext(this);
+        ref = new Firebase("https://gym5meetings.firebaseio.com");
 
         _loginButton.setOnClickListener(new View.OnClickListener() {
 
@@ -78,15 +80,21 @@ public class LoginActivity extends AppCompatActivity {
         String email = _emailText.getText().toString();
         String password = _passwordText.getText().toString();
 
-        Firebase ref = new Firebase("https://gym5meetings.firebaseio.com");
+        final Firebase ref = new Firebase("https://gym5meetings.firebaseio.com");
         ref.authWithPassword(email, password, new Firebase.AuthResultHandler() {
             @Override
             public void onAuthenticated(AuthData authData) {
-//                System.out.println("User ID: " + authData.getUid() + ", Provider: " + authData.getProvider());
-                String login = _emailText.getText().toString();
-                Intent intent = new Intent(getApplicationContext(), SelectSubjectsActivity.class);
-                intent.putExtra("eml", login);
-                startActivity(intent);
+                Intent intent1 = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent2 = new Intent(getApplicationContext(), SelectSubjectsActivity.class);
+
+                SharedPreferences sPref = getSharedPreferences("Credentials", MODE_PRIVATE);
+                String uchplan = sPref.getString("uch_plan", "");
+                save_email_password();
+
+                if (uchplan.length() > 0)
+                    startActivity(intent1);
+                else
+                    startActivity(intent2);
 
             }
             @Override
@@ -135,7 +143,6 @@ public class LoginActivity extends AppCompatActivity {
 
     public void onLoginSuccess() {
         _loginButton.setEnabled(true);
-        save_email_password();
         finish();
     }
 

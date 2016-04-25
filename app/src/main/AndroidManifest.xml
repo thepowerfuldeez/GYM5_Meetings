@@ -27,6 +27,14 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MainSheduleActivity"
+            android:label="@string/title_activity_main_shedule"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MyScheduleActivity"
+            android:label="@string/title_activity_my_schedule"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
